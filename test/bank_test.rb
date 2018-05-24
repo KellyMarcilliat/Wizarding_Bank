@@ -15,10 +15,17 @@ class BankTest < Minitest::Test
     assert_equal "JP Morgan Chase", chase.name
   end
 
-  def test_account_can_be_opened_with_customer_name
+  def test_account_can_be_opened_with_zero_balance
     chase = Bank.new("JP Morgan Chase")
-    person = Person.new("Minerva")
-    assert_equal Minerva_account, person.open_account
+    person = Person.new("Minerva", 500)
+    assert_equal 0, chase.open_account(person)
+  end
+
+  def test_deposit_increases_account_value
+    chase = Bank.new("JP Morgan Chase")
+    person = Person.new("Minerva", 1000)
+    chase.open_account(person)
+    assert_equal 500, chase.deposit("Minerva", 500)
   end
 
 end

@@ -1,18 +1,28 @@
 require 'pry'
 require './lib/person'
 
-
-
 class Bank
 
   attr_reader :name
 
   def initialize(name)
     @name = name
+    @account_holders = {}
   end
 
   def open_account(person)
-    person_account = Person.new(person, balance = 0)
+    person.accounts[name] = 0
+    @account_holders [person] = person.accounts[name]
+    # binding.pry
+  end
+
+  def account_holders
+    @account_holders
+  end
+
+  def deposit(person, amount)
+    # binding.pry
+    person.accounts[name] += amount
   end
 end
 
@@ -20,7 +30,8 @@ end
 chase = Bank.new("JP Morgan Chase")
 p chase
 
-wells_fargo = Bank.new("Wells Fargo")
-p wells_fargo
-
-p chase.open_account("Minerva")
+person1 = Person.new("Minerva", )
+p chase.open_account(person1)
+p person1.accounts
+p chase.deposit(person1, 50)
+p chase.account_holders

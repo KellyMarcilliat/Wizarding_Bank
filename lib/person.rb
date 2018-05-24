@@ -11,6 +11,8 @@ class Person
     @accounts = {}
   end
 
+  
+
 end
 
 # person1 = Person.new("Luna", )

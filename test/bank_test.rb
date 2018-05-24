@@ -25,7 +25,7 @@ class BankTest < Minitest::Test
     chase = Bank.new("JP Morgan Chase")
     person = Person.new("Minerva", 1000)
     chase.open_account(person)
-    assert_equal 500, chase.deposit("Minerva", 500)
+    assert_equal 500, chase.deposit(person, 500)
   end
 
 end
